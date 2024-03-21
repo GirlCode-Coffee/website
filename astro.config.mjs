@@ -1,10 +1,26 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
+import { defineConfig } from 'astro/config'
+import storyblok from '@storyblok/astro'
+import { loadEnv } from 'vite'
+import basicSsl from '@vitejs/plugin-basic-ssl'
+const env = loadEnv("", process.cwd(), 'STORYBLOK')
 
-import sitemap from '@astrojs/sitemap';
-
-// https://astro.build/config
 export default defineConfig({
 	site: 'https://example.com',
-	integrations: [mdx(), sitemap()],
-});
+	integrations: [
+		storyblok({
+			accessToken: env.STORYBLOK_TOKEN,
+			components: {
+				page: "storyblok/Page",
+				feature: "storyblok/Feature",
+				grid: "storyblok/Grid",
+				teaser: "storyblok/Teaser",
+			}
+		})
+	],
+	vite: {
+		plugins: [basicSsl()],
+		server: {
+			https: true,
+		},
+	},
+})
