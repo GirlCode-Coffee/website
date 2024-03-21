@@ -1,7 +1,16 @@
 ---
+import { useStoryblokApi } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import Layout from "../layouts/Default.astro";
+
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/stories/home", {
+	version: "draft",
+});
+
+const story = data.story;
 ---
 
-<Layout title="About Me" description="Lorem ipsum dolor sit amet">
-	<h1>Placeholder</h1>
+<Layout title="About GirlCode" description="GirlCode Coffee Chat Website">
+	<StoryblokComponent blok={story.content} />
 </Layout>

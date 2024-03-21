@@ -1,0 +1,13 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+console.log(blok);
+---
+
+<div {...storyblokEditable(blok)}>
+  <button>
+    {blok.button_label}
+  </button>
+  <!-- TODO: add rest of field-types -->
+</div>
