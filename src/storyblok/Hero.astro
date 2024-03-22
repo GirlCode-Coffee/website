@@ -1,5 +1,6 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import { Image } from 'astro:assets';
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 const { blok } = Astro.props;
@@ -8,7 +9,7 @@ console.log(blok);
 
 <div {...storyblokEditable(blok)} class="flex justify-between align-center">
   <div class="w-1/2">
-    <h1 class="text-6xl">
+    <h1 class="text-7xl font-bold py-10">
       {blok.headline}<span class="text-orange-500">.</span>
     </h1>
     <p>
@@ -20,21 +21,24 @@ console.log(blok);
       })
     }
   </div>
-  <div class="grid grid-cols-3 grid-rows-3">
-    <img class="col-start-3 rounded-full w-40 h-40"
-      class="Alba"
-      src="Images/Alba-profile.jpeg"
-      alt="red haired woman smiling"
+  <div class="grid grid-cols-5 grid-rows-5">
+    <Image class="col-start-4 row-span-2 col-span-2 rounded-full"
+      src={blok.image_alba.filename}
+      alt={blok.image_alba.alt}
+      width="256"
+      height="256"
     />
-    <img class="row-start-3 col-start-3 rounded-full w-40 h-40"
-      class="Arisa"
-      src="Images/Arisa-profile.png"
-      alt="woman in light blue sweater"
+    <Image class="row-start-4 col-start-3 col-span-2 row-span-2 rounded-full"
+      src={blok.image_josefine.filename}
+      alt={blok.image_josefine.alt}
+      width="256"
+      height="256"
     />
-    <img class="col-start-1 row-start-2 rounded-full w-40 h-40"
-      class="Josi"
-      src="Images/Josi-Profile.png"
-      alt="woman laughing on stage"
+    <Image class="col-start-1 row-start-2 col-span-2 row-span-2 rounded-full"
+      src={blok.image_arisa.filename}
+      alt={blok.image_arisa.alt}
+      width="256"
+      height="256"
     />
   </div>
 </div>
