@@ -7,20 +7,34 @@ console.log(blok);
 ---
 
 <div {...storyblokEditable(blok)} class="flex justify-between align-center">
-<div>
-  <h1 class="text-6xl">
-    {blok.headline}<span class="text-orange-500">.</span>
-  </h1>
-  <p>
-    {blok.description}
+  <div class="w-1/2">
+    <h1 class="text-6xl">
+      {blok.headline}<span class="text-orange-500">.</span>
+    </h1>
+    <p>
+      {blok.description}
     </p>
-  {
-    blok.button?.map((blok) => {
-      return <StoryblokComponent blok={blok} />;
-    })
-  }
-</div>
-<div>
-  // Placeholder for image
-</div>
+    {
+      blok.button?.map((blok) => {
+        return <StoryblokComponent blok={blok} />;
+      })
+    }
+  </div>
+  <div class="grid grid-cols-3 grid-rows-3">
+    <img class="col-start-3 rounded-full w-40 h-40"
+      class="Alba"
+      src="Images/Alba-profile.jpeg"
+      alt="red haired woman smiling"
+    />
+    <img class="row-start-3 col-start-3 rounded-full w-40 h-40"
+      class="Arisa"
+      src="Images/Arisa-profile.png"
+      alt="woman in light blue sweater"
+    />
+    <img class="col-start-1 row-start-2 rounded-full w-40 h-40"
+      class="Josi"
+      src="Images/Josi-Profile.png"
+      alt="woman laughing on stage"
+    />
+  </div>
 </div>
