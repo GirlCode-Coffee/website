@@ -6,14 +6,21 @@ const { blok } = Astro.props;
 console.log(blok);
 ---
 
-<div {...storyblokEditable(blok)}>
-  <h1>
-    {blok.headline}
+<div {...storyblokEditable(blok)} class="flex justify-between align-center">
+<div>
+  <h1 class="text-6xl">
+    {blok.headline}<span class="text-orange-500">.</span>
   </h1>
-  <!-- TODO: add rest of field-types -->
+  <p>
+    {blok.description}
+    </p>
   {
     blok.button?.map((blok) => {
       return <StoryblokComponent blok={blok} />;
     })
   }
+</div>
+<div>
+  // Placeholder for image
+</div>
 </div>
