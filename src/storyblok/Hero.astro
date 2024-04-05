@@ -1,10 +1,10 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { ButtonStoryblok } from "../../storyblok-component-types";
 
 const { blok } = Astro.props;
-console.log(blok);
 ---
 
 <div {...storyblokEditable(blok)} class="flex justify-between align-center">
@@ -16,25 +16,28 @@ console.log(blok);
       {blok.description}
     </p>
     {
-      blok.button?.map((blok) => {
+      blok.button?.map((blok: ButtonStoryblok) => {
         return <StoryblokComponent blok={blok} />;
       })
     }
   </div>
   <div class="grid grid-cols-5 grid-rows-5">
-    <Image class="col-start-4 row-span-2 col-span-2 rounded-full"
+    <Image
+      class="col-start-4 row-span-2 col-span-2 rounded-full"
       src={blok.image_alba.filename}
       alt={blok.image_alba.alt}
       width="256"
       height="256"
     />
-    <Image class="row-start-4 col-start-3 col-span-2 row-span-2 rounded-full"
+    <Image
+      class="row-start-4 col-start-3 col-span-2 row-span-2 rounded-full"
       src={blok.image_josefine.filename}
       alt={blok.image_josefine.alt}
       width="256"
       height="256"
     />
-    <Image class="col-start-1 row-start-2 col-span-2 row-span-2 rounded-full"
+    <Image
+      class="col-start-1 row-start-2 col-span-2 row-span-2 rounded-full"
       src={blok.image_arisa.filename}
       alt={blok.image_arisa.alt}
       width="256"
