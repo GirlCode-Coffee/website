@@ -1,5 +1,6 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import { Image } from "astro:assets";
 
 const { blok } = Astro.props;
 ---
@@ -8,5 +9,15 @@ const { blok } = Astro.props;
   <h2>
     {blok.name}
   </h2>
-  <!-- TODO: add rest of field-types -->
+  <Image
+    class="rounded-full"
+    src={blok.headshot.filename}
+    alt={blok.headshot.alt}
+    width="256"
+    height="256"
+  />
+  <a href={blok.x_user_name.url}>{blok.x_user_name.url}</a>
+  <p>
+    {blok.bio}
+  </p>
 </div>
