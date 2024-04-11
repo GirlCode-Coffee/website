@@ -5,19 +5,31 @@ import { Image } from "astro:assets";
 const { blok } = Astro.props;
 ---
 
-<div {...storyblokEditable(blok)}>
-  <h2>
-    {blok.name}
-  </h2>
-  <Image
-    class="rounded-full"
+<div {...storyblokEditable(blok)} class="flex justify-between px-32 py-24">
+  <div class="w-3/5">
+    <h2>
+      {blok.name}
+    </h2>
+    <div>
+      <Image
+      src="/TwitterLogo.png"
+      alt="Twitter Logo"
+      width="25"
+      height="25"
+    />
+      <a href={blok.x_user_name.url}>{blok.x_user_name.url}</a>
+      <p>
+        {blok.bio}
+      </p>
+    </div>
+  </div>
+  <div>
+    <Image
+    class="rounded-xl"
     src={blok.headshot.filename}
     alt={blok.headshot.alt}
     width="256"
     height="256"
   />
-  <a href={blok.x_user_name.url}>{blok.x_user_name.url}</a>
-  <p>
-    {blok.bio}
-  </p>
+  </div>
 </div>
