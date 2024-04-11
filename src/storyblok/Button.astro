@@ -2,11 +2,12 @@
 import { storyblokEditable } from "@storyblok/astro";
 
 const { blok } = Astro.props;
-console.log(blok);
 ---
 
 <div {...storyblokEditable(blok)}>
-  <button>
+  <button
+    class="rounded-full py-2 px-4 bg-yellow-400 font-bold hover:border-solig hover:border-black hover:border-[1px] my-10"
+  >
     {blok.button_label}
   </button>
   <!-- TODO: add rest of field-types -->

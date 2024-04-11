@@ -1,19 +1,47 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import { Image } from "astro:assets";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { ButtonStoryblok } from "../../storyblok-component-types";
 
 const { blok } = Astro.props;
-console.log(blok);
 ---
 
-<div {...storyblokEditable(blok)}>
-  <h1>
-    {blok.headline}
-  </h1>
-  <!-- TODO: add rest of field-types -->
-  {
-    blok.button?.map((blok) => {
-      return <StoryblokComponent blok={blok} />;
-    })
-  }
+<div {...storyblokEditable(blok)} class="flex justify-between align-center">
+  <div class="w-1/2">
+    <h1 class="text-7xl font-bold py-10">
+      {blok.headline}<span class="text-orange-500">.</span>
+    </h1>
+    <p>
+      {blok.description}
+    </p>
+    {
+      blok.button?.map((blok: ButtonStoryblok) => {
+        return <StoryblokComponent blok={blok} />;
+      })
+    }
+  </div>
+  <div class="grid grid-cols-5 grid-rows-5">
+    <Image
+      class="col-start-4 row-span-2 col-span-2 rounded-full"
+      src={blok.image_alba.filename}
+      alt={blok.image_alba.alt}
+      width="256"
+      height="256"
+    />
+    <Image
+      class="row-start-4 col-start-3 col-span-2 row-span-2 rounded-full"
+      src={blok.image_josefine.filename}
+      alt={blok.image_josefine.alt}
+      width="256"
+      height="256"
+    />
+    <Image
+      class="col-start-1 row-start-2 col-span-2 row-span-2 rounded-full"
+      src={blok.image_arisa.filename}
+      alt={blok.image_arisa.alt}
+      width="256"
+      height="256"
+    />
+  </div>
 </div>
