@@ -91,19 +91,27 @@ export interface HeroStoryblok {
 }
 
 export interface PageStoryblok {
-  body?: (ButtonStoryblok | HeroStoryblok | PageStoryblok | ProfileStoryblok)[];
+  body?: (ButtonStoryblok | HeroStoryblok | PageStoryblok | ProfileStoryblok | TestStoryblok)[];
   component: "page";
   _uid: string;
   [k: string]: any;
 }
 
 export interface ProfileStoryblok {
-  background_color?: "" | "white" | "primary-red-lightest";
   name?: string;
+  x_user_name?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  bio?: string;
+  background_color?: "" | "white" | "primary-red-lightest";
   reverse_layout?: boolean;
   headshot?: AssetStoryblok;
-  x_user_name?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   component: "profile";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TestStoryblok {
+  test_field_type?: string;
+  component: "test";
   _uid: string;
   [k: string]: any;
 }

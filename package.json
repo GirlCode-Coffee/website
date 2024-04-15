@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "girlcode-website:download-component-schema": "storyblok pull-components --space=281212",
+    "girlcode-website:generate-types": "storyblok generate-typescript-typedefs --sourceFilePaths ./components.281212.json"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
